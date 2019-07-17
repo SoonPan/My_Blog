@@ -1,0 +1,108 @@
+{% load staticfiles %}
+<!-- Footer -->
+<nav class="navbar navbar-dark bg-dark mb-0" id="nav-footer">
+    <div class="row col justify-content-center">
+        <h3 class="mr-3">
+            <a href="mailto:songpano@gmail.com" class="hvr-icon-grow no-underline">
+                <i class="fas fa-envelope hvr-icon" style="color: lightskyblue;" id="layer_email"></i>
+            </a>
+        </h3>
+        <h3 class="mr-3">
+            <a href="https://github.com/soonpan" style="color: #f0c674;" target="_blank" class="hvr-icon-grow no-underline">
+                <i class="fab fa-github hvr-icon" id="layer_github"></i>
+            </a>
+        </h3>
+        <h3 class="mr-3">
+            <a href="//weibo.com/Song-Singer" style="color: indianred;" target="_blank" class="hvr-icon-grow no-underline">
+                <i class="fab fa-weibo hvr-icon" id="layer_weibo"></i>
+            </a>
+        </h3>
+        <h3>
+            <a href="/aboutme/#wechart_qr" style="color: yellowgreen;" class="hvr-icon-grow no-underline">
+                <i class="fab fa-weixin hvr-icon" id="footer_wechart"></i>
+            </a>
+        </h3>
+    </div>
+
+    <div class="row col-12 justify-content-center">
+        <div style="text-align: center; color: lightgrey;">
+            <p class="mb-0">CopyRight &copy; 2019 Spock的学习经验</p>
+            <p class="mb-0">Powered by
+                <a href="https://www.djangoproject.com/" target="_blank">
+                    Django
+                </a> &
+                <a target="_blank" href="https://getbootstrap.com/">
+                    Bootstrap
+                </a>
+                <span class="mb-0">&nbsp;正在备案中</span>
+            </p>
+        </div>
+    </div>
+</nav>
+<script>
+    $('#layer_email').on('mouseenter', function () {
+        this.index = layer.tips('给博主发邮件', this, {
+            time: -1,
+            maxWidth: 280,
+            tips: [1, 'lightskyblue']
+        });
+    }).on('mouseleave', function () {
+        layer.close(this.index);
+    });
+
+    $('#layer_weibo').on('mouseenter', function () {
+        this.index = layer.tips('关注博主微博', this, {
+            time: -1,
+            maxWidth: 280,
+            tips: [1, 'indianred']
+        });
+    }).on('mouseleave', function () {
+        layer.close(this.index);
+    });
+
+    $('#layer_github').on('mouseenter', function () {
+        this.index = layer.tips('在GitHub查看博主代码', this, {
+            time: -1,
+            maxWidth: 280,
+            tips: [1, '#f0c674']
+        });
+    }).on('mouseleave', function () {
+        layer.close(this.index);
+    });
+
+    $('#footer_wechart').on('mouseenter', function () {
+        this.index = layer.tips('博主微博二维码', this, {
+            time: -1,
+            maxWidth: 280,
+            tips: [1, 'yellowgreen']
+        });
+    }).on('mouseleave', function () {
+        layer.close(this.index);
+    });
+</script>
+
+
+<script src="https://cdn.bootcss.com/mo-js/0.288.2/mo.min.js"> </script>
+<script src="https://cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+    <script src="/static/js/sticky_sidebar/jquery.sticky-sidebar.min.js"></script>
+        <script>
+            $(() => {
+                $('#sidebar').stickySidebar({
+                    topSpacing: 0,
+                    bottomSpacing: 20,
+                });
+                $('#sidebar2').stickySidebar({
+                    topSpacing: 0,
+                    bottomSpacing: 20,
+                });
+
+
+                $(window).scroll(function () {
+                    if ($(this).scrollTop() > 500) {
+                        $('#notice_card').fadeOut(2000);
+                    } else {
+                        $('#notice_card').stop().fadeIn(1000);
+                    }
+                }).scroll();
+            });
+        </script>
