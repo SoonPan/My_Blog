@@ -8,12 +8,14 @@
             </a>
         </h3>
         <h3 class="mr-3">
-            <a href="https://github.com/soonpan" style="color: #f0c674;" target="_blank" class="hvr-icon-grow no-underline">
+            <a href="https://github.com/soonpan" style="color: #f0c674;" target="_blank"
+               class="hvr-icon-grow no-underline">
                 <i class="fab fa-github hvr-icon" id="layer_github"></i>
             </a>
         </h3>
         <h3 class="mr-3">
-            <a href="//weibo.com/Song-Singer" style="color: indianred;" target="_blank" class="hvr-icon-grow no-underline">
+            <a href="//weibo.com/Song-Singer" style="color: indianred;" target="_blank"
+               class="hvr-icon-grow no-underline">
                 <i class="fab fa-weibo hvr-icon" id="layer_weibo"></i>
             </a>
         </h3>
@@ -34,7 +36,7 @@
                 <a target="_blank" href="https://getbootstrap.com/">
                     Bootstrap
                 </a>
-                <img src="{% static 'img/备案图标.png' %}"><span class="mb-0"></span>
+                <img src="{% static 'img/备案图标.png' %}"><span class="mb-0">&nbsp;陕ICP备19014852号-1</span>
             </p>
         </div>
     </div>
@@ -82,27 +84,27 @@
 </script>
 
 
-<script src="https://cdn.bootcss.com/mo-js/0.288.2/mo.min.js"> </script>
+<script src="https://cdn.bootcss.com/mo-js/0.288.2/mo.min.js"></script>
 <script src="https://cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
-    <script src="/static/js/sticky_sidebar/jquery.sticky-sidebar.min.js"></script>
-        <script>
-            $(() => {
-                $('#sidebar').stickySidebar({
-                    topSpacing: 0,
-                    bottomSpacing: 20,
-                });
-                $('#sidebar2').stickySidebar({
-                    topSpacing: 0,
-                    bottomSpacing: 20,
-                });
+<script src="/static/js/sticky_sidebar/jquery.sticky-sidebar.min.js"></script>
+<script>
+    $(() => {
+        $('#sidebar').stickySidebar({
+            topSpacing: 0,
+            bottomSpacing: 20,
+        });
+        $('#sidebar2').stickySidebar({
+            topSpacing: 0,
+            bottomSpacing: 20,
+        });
 
 
-                $(window).scroll(function () {
-                    if ($(this).scrollTop() > 500) {
-                        $('#notice_card').fadeOut(2000);
-                    } else {
-                        $('#notice_card').stop().fadeIn(1000);
-                    }
-                }).scroll();
-            });
-        </script>
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 500) {
+                $('#notice_card').fadeOut(2000);
+            } else {
+                $('#notice_card').stop().fadeIn(1000);
+            }
+        }).scroll();
+    });
+</script>

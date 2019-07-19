@@ -13,8 +13,8 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="format-detection" content="telephone=no">
-    <link rel="bookmark" type="image/x-icon" href="{% static 'img/favicon.ico'%}"/>
-    <link rel="shortcut icon" href="{% static 'img/favicon.ico'%}">
+    <link rel="bookmark" type="image/x-icon" href="{% static 'img/favicon.ico' %}"/>
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}">
 
     <!-- 预留网站标题的位置 -->
     <title>{% block title %}{% endblock title %}</title>
@@ -31,57 +31,57 @@
 
 <body>
 
-    <!-- bootstrap.js 依赖 jquery.js 和popper.js，因此在这里引入 -->
-    <script src="{% static 'js/jquery/jquery-3.3.1.js' %}"></script>
-    <script src="{% static 'js/jquery.min.js'%}"></script>
-    <script src="{% static 'js/popper/popper-1.14.4.js' %}"></script>
-    <!-- 引入bootstrap的js文件 -->
-    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
-    <!-- 引入layer.js -->
-    <script src="{% static 'js/layer/layer.js' %}"></script>
+<!-- bootstrap.js 依赖 jquery.js 和popper.js，因此在这里引入 -->
+<script src="{% static 'js/jquery/jquery-3.3.1.js' %}"></script>
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/popper/popper-1.14.4.js' %}"></script>
+<!-- 引入bootstrap的js文件 -->
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+<!-- 引入layer.js -->
+<script src="{% static 'js/layer/layer.js' %}"></script>
 
-    <!-- 在jquery后面引入 -->
-    {% include 'back_to_top_func.html' %}
+<!-- 在jquery后面引入 -->
+{% include 'back_to_top_func.html' %}
 
-    <!-- 引入导航栏 -->
-    {% include 'header.html' %}
-    <!-- 预留具体页面的位置 -->
-    <!-- 新增两个 div 容器 -->
-    <div id="wrapper">
-        {% block content %}{% endblock content %}
-        <div id="push"></div>
-    </div>
+<!-- 引入导航栏 -->
+{% include 'header.html' %}
+<!-- 预留具体页面的位置 -->
+<!-- 新增两个 div 容器 -->
+<div id="wrapper">
+    {% block content %}{% endblock content %}
+    <div id="push"></div>
+</div>
 
 
-    <!-- 引入注脚 -->
-    {% include 'footer.html' %}
+<!-- 引入注脚 -->
+{% include 'footer.html' %}
 
-    {% block script %}{% endblock script %}
+{% block script %}{% endblock script %}
 
-    <!-- 增加样式 -->
-    <style>
-        html, body {
-            height: 100%;
-            margin: 0;
-        }
+<!-- 增加样式 -->
+<style>
+    html, body {
+        height: 100%;
+        margin: 0;
+    }
 
-        #wrapper {
-            min-height: 100%;
-            margin-bottom: -60px;
-        }
+    #wrapper {
+        min-height: 100%;
+        margin-bottom: -60px;
+    }
 
-        #footer,
-        #push {
-            height: 60px;
-        }
-    </style>
-    <!--横向滚动条加上一堆以后会用到的js-->
-    <script src="https://cdn.bootcss.com/mo-js/0.288.2/mo.min.js"></script>
-    <script src="https://cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
-    <script src="{% static 'js/progress_indicator.js' %}"></script>
-    <script src="{% static 'js/sponsor_handler.js' %}"></script>
-    <script src="{%  static 'js/animocons_likes.js'%}"></script>
-    <script src="{% static 'js/animo_fireworks.js' %}"></script>
+    #footer,
+    #push {
+        height: 60px;
+    }
+</style>
+<!--横向滚动条加上一堆以后会用到的js-->
+<script src="https://cdn.bootcss.com/mo-js/0.288.2/mo.min.js"></script>
+<script src="https://cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+<script src="{% static 'js/progress_indicator.js' %}"></script>
+<script src="{% static 'js/sponsor_handler.js' %}"></script>
+<script src="{% static 'js/animocons_likes.js' %}"></script>
+<script src="{% static 'js/animo_fireworks.js' %}"></script>
 
 <div id="progress-indicator" class="progress-indicator"
      style="position: fixed; top: 0px; left: 0px; height: 3px; background-color: rgb(30, 144, 255); width: 0%;">
