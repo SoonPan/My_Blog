@@ -92,3 +92,45 @@ def post_comment(request, article_id, parent_comment_id=None):
     else:
         return HttpResponse("仅接受GET/POST请求。")
 
+
+def comment_delete(request, article_id, comment_id,flag):
+    article = get_object_or_404(ArticlePost, id=article_id)
+    delete_comment = Comment.objects.get(id=comment_id)
+
+    if flag:
+        delete_comment.delete()
+        redirect_url = article.get_absolute_url()
+    else:
+        delete_comment.body = '该评论已被删除！'
+        delete_comment.save()
+        redirect_url = article.get_absolute_url() + '#comment_elem_' + str(comment_id)
+    return redirect(redirect_url)
+
+def edit_comment(request, article_id,comment_id):
+    comment = get_object_or_404(Comment, id=comment_id)
+    article = get_object_or_404(ArticlePost, id=article_id)
+    # 处理 POST 请求
+    if request.method == 'POST':
+        comment_form = CommentForm(request.POST)
+        if comment_form.is_valid():
+            comment.body = request.POST['body']
+            comment.save()
+            return JsonResponse({"code": "200 OK", "comment_id": comment_id})
+        else:
+            return HttpResponse("表单内容有误，请重新填写。")
+    # 处理 GET 请求
+    elif request.method == 'GET':
+        comment= get_object_or_404(Comment, id=comment_id)
+        content = comment.body
+        data ={"body":content}
+        comment_form = CommentForm(data)
+
+        context = {
+            'comment_form': comment_form,
+            'article_id': article_id,
+            'comment_id': comment_id
+        }
+        return render(request, 'comment/change.html', context)
+    # 处理其他请求
+    else:
+        return HttpResponse("仅接受GET/POST请求。")

@@ -332,11 +332,7 @@ body {
         border-color: rgb(255, 102, 102);
         box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
     }
-}
-
-� *
-
-/
+}�*/
 
 /*https://css-tricks.com/couple-takes-sticky-footer/?utm_source=caibaojian.com*/
 
@@ -667,8 +663,7 @@ body {
         box-shadow: 0 0 5px rgba(255, 0, 0, 0.2);
     }
     100% {
-        box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
         border-color: rgb(255, 102, 102);
+        box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
     }
-
 }

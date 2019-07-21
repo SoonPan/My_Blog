@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '0ra8!9vk4%8jiaagu(_c!9mee+n*%&)&in7fe1x26zqv@a664i'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -117,15 +117,15 @@ AUTHENTICATION_BACKENDS = (
 # SMTP服务器，改为你的邮箱的smtp!
 EMAIL_HOST = 'smtp.qq.com'
 # 改为你自己的邮箱名！
-EMAIL_HOST_USER = 'XXXXXXXXXX@qq.com '
+EMAIL_HOST_USER = 'XXXXXX@qq.com '
 # 你的邮箱密码
-EMAIL_HOST_PASSWORD = 'xxxxxxxxxxxxxxxx'
+EMAIL_HOST_PASSWORD = 'XXXXXXXXXXXXXXXX'
 # 发送邮件的端口
 EMAIL_PORT = 25
 # 是否使用 TLS
 EMAIL_USE_TLS = True
 # 默认的发件人
-DEFAULT_FROM_EMAIL = 'Spock的网站 <761827090@qq.com>'
+DEFAULT_FROM_EMAIL = 'Spock的网站 <XXXXXXX@qq.com>'
 
 
 
@@ -147,7 +147,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'my_blog',
         'USER': 'root',
-        'PASSWORD': 'XXXX',
+        'PASSWORD': 'XXXXXXXX',
         'HOST': 'localhost',
         'PORT': '3306',
 
