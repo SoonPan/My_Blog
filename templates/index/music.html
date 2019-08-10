@@ -1,0 +1,44 @@
+<!-- extends表明此页面继承自 base.html 文件 -->
+{% extends "base.html" %}
+{% load staticfiles %}
+
+<!-- 写入 base.html 中定义的 title -->
+{% block title %}
+    哦，独享的Moment
+{% endblock title %}
+
+<!-- 写入 base.html 中定义的 content -->
+{% block content %}
+
+    <div class="row">
+
+        <div class="col-4">
+            <iframe frameborder="no" border="0"
+                    marginwidth="0" marginheight="0"
+                    width=400
+                    height=900
+                    src="//music.163.com/outchain/player?type=0&id=2873807527&auto=1&height=430">
+
+            </iframe>
+        </div>
+
+        <div class="col-6 d-none d-lg-block">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class="text-center " style="font-size:40px">
+                正在装饰中...
+            </div>
+
+        </div>
+
+        <div class="col-2">
+
+        </div>
+
+    </div>
+{% endblock content %}

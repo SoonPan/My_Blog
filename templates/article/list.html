@@ -1,0 +1,407 @@
+<!-- 载入静态文件 -->
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<!-- 网站主语言 -->
+<html lang="zh-cn">
+
+<head>
+    <!-- 网站采用的字符编码 -->
+    <meta charset="utf-8">
+
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="bookmark" type="image/x-icon" href="{% static 'img/favicon.ico' %}"/>
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}">
+    <!-- 预留网站标题的位置 -->
+    <title>Spock的学习经验</title>
+    <!-- 引入bootstrap的css文件 -->
+    <!-- 引入monokai.css -->
+    <link rel="stylesheet" href="{% static 'css/md_css/monokai.css' %}">
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/font-awesome/5.8.2/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/hover.css/2.3.1/css/hover-min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/personal_style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/icons.css' %}">
+</head>
+
+<body>
+
+<!-- bootstrap.js 依赖 jquery.js 和popper.js，因此在这里引入 -->
+<script src="{% static 'js/jquery/jquery-3.3.1.js' %}"></script>
+<script src="{% static 'js/popper/popper-1.14.4.js' %}"></script>
+<script src="{% static 'js/popper/popper-1.14.4.js' %}"></script>
+<!-- 引入bootstrap的js文件 -->
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+<!-- 引入layer.js -->
+<script src="{% static 'js/layer/layer.js' %}"></script>
+
+{% block script %}{% endblock script %}
+
+
+<!-- 在jquery后面引入 -->
+{% include 'back_to_top_func.html' %}
+
+<!-- 引入导航栏 -->
+{% include 'header.html' %}
+
+<!-- 预留具体页面的位置 -->
+<!-- 新增两个 div 容器 -->
+<div class="container" id="wrapper">
+
+
+    <div class="row">
+
+        <div class="col-12 col-lg-9">
+
+            <div class="">
+
+
+                <div class="mt-2 mb-2">
+                    <a class="
+                btn
+                btn-sm
+                mr-1
+                hvr-pop
+                  {% if column.title == None or column.title == 'None' %}
+                  btn-success
+                  {% else %}
+                  btn-outline-secondary
+                  {% endif %}
+
+             "
+                       href="/"
+                       role="button"
+                    >
+                        综合
+                    </a>
+                    <a class="
+                btn
+                btn-sm
+                mr-1
+                hvr-pop
+                  {% if column.title == '1' %}
+                  btn-success
+                  {% else %}
+                  btn-outline-secondary
+                  {% endif %}
+
+                "
+                       href="{% url 'article:article_list' %}?column={{ 1 }}"
+                       role="button"
+                    >
+                        程序
+                    </a>
+                    <a class="
+                btn
+                btn-sm
+                mr-1
+                hvr-pop
+                  {% if column.title == '2' %}
+                  btn-success
+                  {% else %}
+                  btn-outline-secondary
+                  {% endif %}
+
+                "
+                       href="{% url 'article:article_list' %}?column={{ 2 }}"
+                       role="button"
+                    >
+                        植物
+                    </a>
+
+                    <a class="
+                btn
+                btn-sm
+                mr-1
+                hvr-pop
+                  {% if column.title == '3' %}
+                  btn-success
+                  {% else %}
+                  btn-outline-secondary
+                  {% endif %}
+
+                "
+                       href="{% url 'article:article_list' %}?column={{ 3 }}"
+                       role="button"
+                    >
+                        学习
+                    </a>
+
+                    <a class="
+                btn
+                btn-sm
+                mr-1
+                hvr-pop
+                  {% if column.title == '4' %}
+                  btn-success
+                  {% else %}
+                  btn-outline-secondary
+                  {% endif %}
+
+                "
+                       href="{% url 'article:article_list' %}?column={{ 4 }}"
+                       role="button"
+                    >
+                        随想
+                    </a>
+
+
+                </div>
+
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb" style="background-color: white; padding: 0 0 0 2px; font-size: 0.9em">
+                        <li class="breadcrumb-item">
+                            <a href="{% url 'article:article_list' %}?search={{ search }}&column={{ column }}&course={{ course }}&tag={{ tag }}"
+                               class="no-underline hvr-grow-rotate"
+                               style="
+                                       {% if order != 'total_views' %}
+
+                                       {% else %}
+                                           color: dimgray
+                                       {% endif %}"
+                            >
+                                最近
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="{% url 'article:article_list' %}?order=total_views&search={{ search }}&column={{ column }}&course={{ course }}&tag={{ tag }}"
+                               class="no-underline hvr-grow-rotate"
+                               style="
+                                       {% if order == 'total_views' %}
+
+                                       {% else %}
+                                           color: dimgray
+                                       {% endif %}"
+                            >
+                                最热
+
+                            </a>
+                        </li>
+                    </ol>
+                </nav>
+
+                {% for article in articles %}
+
+                    <div class="card mb-2 hvr-glow" style="display: flex">
+
+
+                        <div class="row no-gutters align-items-center">
+
+
+                            {% if article.avatar %}
+
+                                <div class="col-4 d-none d-md-block" style="overflow: hidden">
+
+                                    <a href="{% url 'article:article_detail' article.id %}">
+                                        <img src="{{ article.avatar.url }}"
+                                             class="card-img hvr-grow"
+                                             alt="缩略图"
+                                             style="transition-duration: 1s;"
+                                        >
+                                    </a>
+                                </div>
+
+                            {% endif %}
+
+                            <!-- 文章内容 -->
+                            <div class="col">
+
+                                <div class="card-body">
+                                    <!-- 标题 -->
+                                    <h4 class="mt-0">
+                                        <a href="{% url 'article:article_detail' article.id %}"
+                                           style="font-weight: bold; color: black;"
+                                           class="hvr-forward no-underline"
+
+                                        >
+                                            {{ article.title }}
+                                        </a>
+
+                                    </h4>
+
+                                    <div class="mb-2 ">
+                                        <!-- 栏目 -->
+                                        {% if article.column %}
+                                            <a href="{% url 'article:article_list' %}?column={{ article.column.id }}"
+                                               role="button"
+                                               class="btn btn-sm mb-2 hvr-pop
+                                        {% if article.column.title == '植物' %}
+                                            btn-success
+                                        {% elif article.column.title == '程序' %}
+                                            btn-danger
+                                        {% elif article.column.title == '学习' %}
+                                            btn-info
+                                        {% elif article.column.title == '随想' %}
+                                            btn-warning
+                                        {% endif %}
+                            "
+                                            >
+                                                {{ article.column }}
+                                            </a>
+
+                                        {% endif %}
+
+
+                                        <!-- 标签 -->
+                                        {% for tag in article.tags.all %}
+                                            <a href="{% url 'article:article_list' %}?tag={{ tag }}"
+                                               class="badge badge-pill badge-light hvr-float-shadow"
+                                               style="color: grey;"
+                                            >
+                                                {{ tag }}
+                                            </a>
+                                        {% endfor %}
+
+
+                                    </div>
+
+
+                                    <!-- 摘要-->
+                                    <div>
+                                        <p style="color: gray;">
+                                            {{ article.summary }}...
+                                        </p>
+                                    </div>
+
+                                    <p>
+                                        <!-- 附加信息，增加了图标 -->
+                                        <a>
+                                            <i class="fas fa-eye" style="color: lightskyblue;"></i>
+                                            {{ article.total_views }}&nbsp;&nbsp;&nbsp;
+                                        </a>
+                                        <a>
+                                            <i class="fas fa-comments" style="color: yellowgreen;"></i>
+                                            <!-- 修改为评论的计数 -->
+                                            {{ article.comments.count }}&nbsp;&nbsp;&nbsp;
+                                        </a>
+                                        <a>
+                                            <i class="fas fa-clock" style="color: pink;"></i>
+                                            {{ article.created|date:'Y-m-d' }}
+                                        </a>
+                                        &nbsp;
+                                        {% if article.course %}
+                                        <a href="{% url 'article:article_list' %}?course={{ article.course.id }}"
+                                           style="color: #8D8D8D;"
+                                           class="no-underline hvr-forward"
+                                        >
+                                            <i class="fas fa-book" style="color: #f0c674;"></i>
+                                            {{ article.course.title }}
+                                        </a>
+                                        {% endif %}
+
+                                    </p>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+
+
+                {% endfor %}
+
+
+
+                <!-- 页码导航 -->
+                <div class="pagination row">
+                    <div class="m-auto">
+                <span class="step-links">
+                    <!-- 如果不是第一页，则显示上翻按钮 -->
+                    {% if articles.has_previous %}
+                        <a href="?page=1&order={{ order }}&search={{ search }}&column={{ column }}&course={{ course }}&tag={{ tag }}"
+                           class="btn btn-success">&laquo; 1</a>
+
+                        <span>...</span>
+
+                        <a href="?page={{ articles.previous_page_number }}&order={{ order }}&search={{ search }}&column={{ column }}&course={{ course }}&tag={{ tag }}"
+                           class="btn btn-secondary">...</a>
+                    {% endif %}
+
+                    <!-- 当前页面 -->
+                    <span class="current btn btn-danger btn-lg">
+                        {{ articles.number }}
+                    </span>
+
+                    <!-- 如果不是最末页，则显示下翻按钮 -->
+                    {% if articles.has_next %}
+                        <a href="?page={{ articles.next_page_number }}&order={{ order }}&search={{ search }}&column={{ column }}&course={{ course }}&tag={{ tag }}"
+                           class="btn btn-secondary">{{ articles.next_page_number }}</a>
+                        <span>...</span>
+
+                        <a href="?page={{ articles.paginator.num_pages }}&order={{ order }}&search={{ search }}&column={{ column }}&course={{ course }}&tag={{ tag }}"
+                           class="btn btn-success">{{ articles.paginator.num_pages }} &raquo;</a>
+                        </a>
+                    {% endif %}
+                </span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- 主页右侧 -->
+        <div class="col-3 d-none d-lg-block">
+            <script src="{% static 'js/jquery.min.js' %}"></script>
+            <script src="{% static 'js/zzsz.js' %}"></script>
+            <div class="card mb-4 mt-4 hvr-glow no-underline" style="display: flex">
+
+                <div class="card-body">
+                    <a class="card-title text-center "><strong>现在的时间:</strong></a>
+                    <div id="zzsc" class="d-none d-md-block">
+                        <canvas id="canvas" class="w-100" width="920" height="400"></canvas>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <div id="push"></div>
+</div>
+
+<!-- 引入注脚 -->
+{% include 'footer.html' %}
+
+<!-- 增加样式 -->
+<style>
+    html, body {
+        height: 100%;
+        margin: 0;
+    }
+
+    #wrapper {
+        min-height: 100%;
+        margin-bottom: -60px;
+    }
+
+    #footer,
+    #push {
+        height: 60px;
+    }
+</style>
+<script src="{% static 'js/progress_indicator.js' %}"></script>
+<div id="progress-indicator" class="progress-indicator"
+     style="position: fixed; top: 0px; left: 0px; height: 3px; background-color: rgb(30, 144, 255); width: 0%;">
+</div>
+
+</body>
+
+</html>
+
+
+

@@ -1,0 +1,92 @@
+<!-- 载入静态文件 -->
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<!-- 网站主语言 -->
+<html lang="zh-cn">
+
+<head>
+    <!-- 网站采用的字符编码 -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="bookmark" type="image/x-icon" href="{% static 'img/favicon.ico' %}"/>
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}">
+
+    <!-- 预留网站标题的位置 -->
+    <title>{% block title %}{% endblock title %}</title>
+    <!-- 引入bootstrap的css文件 -->
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/font-awesome/5.8.2/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/hover.css/2.3.1/css/hover-min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/personal_style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/icons.css' %}">
+    <link rel="stylesheet" href="{% static 'css/md_css/monokai.css' %}">
+
+
+</head>
+
+<body>
+
+<!-- bootstrap.js 依赖 jquery.js 和popper.js，因此在这里引入 -->
+<script src="{% static 'js/jquery/jquery-3.3.1.js' %}"></script>
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/popper/popper-1.14.4.js' %}"></script>
+<!-- 引入bootstrap的js文件 -->
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+<!-- 引入layer.js -->
+<script src="{% static 'js/layer/layer.js' %}"></script>
+
+<!-- 在jquery后面引入 -->
+{% include 'back_to_top_func.html' %}
+
+<!-- 引入导航栏 -->
+{% include 'header.html' %}
+<!-- 预留具体页面的位置 -->
+<!-- 新增两个 div 容器 -->
+<div id="wrapper">
+    {% block content %}{% endblock content %}
+    <div id="push"></div>
+</div>
+
+
+<!-- 引入注脚 -->
+{% include 'footer.html' %}
+
+{% block script %}{% endblock script %}
+
+<!-- 增加样式 -->
+<style>
+    html, body {
+        height: 100%;
+        margin: 0;
+    }
+
+    #wrapper {
+        min-height: 100%;
+        margin-bottom: -60px;
+    }
+
+    #footer,
+    #push {
+        height: 60px;
+    }
+</style>
+<!--横向滚动条加上一堆以后会用到的js-->
+<script src="https://cdn.bootcss.com/mo-js/0.288.2/mo.min.js"></script>
+<script src="https://cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+<script src="{% static 'js/progress_indicator.js' %}"></script>
+<script src="{% static 'js/sponsor_handler.js' %}"></script>
+<script src="{% static 'js/animocons_likes.js' %}"></script>
+<script src="{% static 'js/animo_fireworks.js' %}"></script>
+
+<div id="progress-indicator" class="progress-indicator"
+     style="position: fixed; top: 0px; left: 0px; height: 3px; background-color: rgb(30, 144, 255); width: 0%;">
+
+</div>
+</body>
+
+</html>
